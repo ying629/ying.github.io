@@ -1,0 +1,27 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	color: #808080;
+	text-align: center;
+}
+
+td {
+  width:50vw;
+  height:50vw;
+  vertical-align: center;
+  padding-top: 0px;
+  text-align: center;
+}
+
+canvas {
+	position: absolute;
+	top: 0;
+	z-index: -1;
+}
+
+.canvasholder {
+	width: 100%;
+}

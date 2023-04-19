@@ -12,18 +12,10 @@ function setup() {
 
 function draw() {
 	clear();
-	background(color('white'));
+	background(color('grey'));
 }
 
 
 
 // https://p5js.org/reference/#/p5/image
 // https://stackoverflow.com/questions/39126139/is-there-a-way-to-load-and-clip-an-image-with-a-round-border-in-p5-js
-
-
-
-
-
-
-
-

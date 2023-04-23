@@ -11,10 +11,10 @@ h1 {
 
 td {
 	color: #808080;
-  width:50vw;
-  height:30vw;
+  width:30vw;
+  height:20vw;
   vertical-align: center;
-  padding-top: 0px;
+  padding-top:0px;
   text-align: center;
 	font-family: "Lucida Console", "Courier New", monospace;
 }

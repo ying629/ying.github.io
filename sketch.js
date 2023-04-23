@@ -12,7 +12,7 @@ function setup() {
 
 function draw() {
 	clear();
-	background(color('grey'));
+	background(color('white'));
 }
 
 

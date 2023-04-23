@@ -27497,27 +27497,27 @@
             }            /**
     `Promise.resolve` returns a promise that will become resolved with the
     passed `value`. It is shorthand for the following:
-  
+
     ```javascript
     let promise = new Promise(function(resolve, reject){
       resolve(1);
     });
-  
+
     promise.then(function(value){
       // value === 1
     });
     ```
-  
+
     Instead of writing the above, your code now simply becomes the following:
-  
+
     ```javascript
     let promise = Promise.resolve(1);
-  
+
     promise.then(function(value){
       // value === 1
     });
     ```
-  
+
     @method resolve
     @static
     @param {Any} value value that the returned promise will be resolved with
@@ -27826,39 +27826,39 @@
     is fulfilled with an array of fulfillment values for the passed promises, or
     rejected with the reason of the first passed promise to be rejected. It casts all
     elements of the passed iterable to promises as it runs this algorithm.
-  
+
     Example:
-  
+
     ```javascript
     let promise1 = resolve(1);
     let promise2 = resolve(2);
     let promise3 = resolve(3);
     let promises = [ promise1, promise2, promise3 ];
-  
+
     Promise.all(promises).then(function(array){
       // The array here would be [ 1, 2, 3 ];
     });
     ```
-  
+
     If any of the `promises` given to `all` are rejected, the first promise
     that is rejected will be given as an argument to the returned promises's
     rejection handler. For example:
-  
+
     Example:
-  
+
     ```javascript
     let promise1 = resolve(1);
     let promise2 = reject(new Error("2"));
     let promise3 = reject(new Error("3"));
     let promises = [ promise1, promise2, promise3 ];
-  
+
     Promise.all(promises).then(function(array){
       // Code here never runs because there are rejected promises!
     }, function(error) {
       // error.message === "2"
     });
     ```
-  
+
     @method all
     @static
     @param {Array} entries array of promises
@@ -27873,47 +27873,47 @@
             }            /**
     `Promise.race` returns a new promise which is settled in the same way as the
     first passed promise to settle.
-  
+
     Example:
-  
+
     ```javascript
     let promise1 = new Promise(function(resolve, reject){
       setTimeout(function(){
         resolve('promise 1');
       }, 200);
     });
-  
+
     let promise2 = new Promise(function(resolve, reject){
       setTimeout(function(){
         resolve('promise 2');
       }, 100);
     });
-  
+
     Promise.race([promise1, promise2]).then(function(result){
       // result === 'promise 2' because it was resolved before promise1
       // was resolved.
     });
     ```
-  
+
     `Promise.race` is deterministic in that only the state of the first
     settled promise matters. For example, even if other promises given to the
     `promises` array argument are resolved, but the first settled promise has
     become rejected before the other promises became fulfilled, the returned
     promise will become rejected:
-  
+
     ```javascript
     let promise1 = new Promise(function(resolve, reject){
       setTimeout(function(){
         resolve('promise 1');
       }, 200);
     });
-  
+
     let promise2 = new Promise(function(resolve, reject){
       setTimeout(function(){
         reject(new Error('promise 2'));
       }, 100);
     });
-  
+
     Promise.race([promise1, promise2]).then(function(result){
       // Code here never runs
     }, function(reason){
@@ -27921,13 +27921,13 @@
       // promise 1 became fulfilled
     });
     ```
-  
+
     An example real-world use case is implementing timeouts:
-  
+
     ```javascript
     Promise.race([ajax('foo.json'), timeout(5000)])
     ```
-  
+
     @method race
     @static
     @param {Array} promises array of promises to observe
@@ -27954,31 +27954,31 @@
             }            /**
     `Promise.reject` returns a promise rejected with the passed `reason`.
     It is shorthand for the following:
-  
+
     ```javascript
     let promise = new Promise(function(resolve, reject){
       reject(new Error('WHOOPS'));
     });
-  
+
     promise.then(function(value){
       // Code here doesn't run because the promise is rejected!
     }, function(reason){
       // reason.message === 'WHOOPS'
     });
     ```
-  
+
     Instead of writing the above, your code now simply becomes the following:
-  
+
     ```javascript
     let promise = Promise.reject(new Error('WHOOPS'));
-  
+
     promise.then(function(value){
       // Code here doesn't run because the promise is rejected!
     }, function(reason){
       // reason.message === 'WHOOPS'
     });
     ```
-  
+
     @method reject
     @static
     @param {Any} reason value that the returned promise will be rejected with.
@@ -28003,66 +28003,66 @@
     primary way of interacting with a promise is through its `then` method, which
     registers callbacks to receive either a promise's eventual value or the reason
     why the promise cannot be fulfilled.
-  
+
     Terminology
     -----------
-  
+
     - `promise` is an object or function with a `then` method whose behavior conforms to this specification.
     - `thenable` is an object or function that defines a `then` method.
     - `value` is any legal JavaScript value (including undefined, a thenable, or a promise).
     - `exception` is a value that is thrown using the throw statement.
     - `reason` is a value that indicates why a promise was rejected.
     - `settled` the final resting state of a promise, fulfilled or rejected.
-  
+
     A promise can be in one of three states: pending, fulfilled, or rejected.
-  
+
     Promises that are fulfilled have a fulfillment value and are in the fulfilled
     state.  Promises that are rejected have a rejection reason and are in the
     rejected state.  A fulfillment value is never a thenable.
-  
+
     Promises can also be said to *resolve* a value.  If this value is also a
     promise, then the original promise's settled state will match the value's
     settled state.  So a promise that *resolves* a promise that rejects will
     itself reject, and a promise that *resolves* a promise that fulfills will
     itself fulfill.
-  
-  
+
+
     Basic Usage:
     ------------
-  
+
     ```js
     let promise = new Promise(function(resolve, reject) {
       // on success
       resolve(value);
-  
+
       // on failure
       reject(reason);
     });
-  
+
     promise.then(function(value) {
       // on fulfillment
     }, function(reason) {
       // on rejection
     });
     ```
-  
+
     Advanced Usage:
     ---------------
-  
+
     Promises shine when abstracting away asynchronous interactions such as
     `XMLHttpRequest`s.
-  
+
     ```js
     function getJSON(url) {
       return new Promise(function(resolve, reject){
         let xhr = new XMLHttpRequest();
-  
+
         xhr.open('GET', url);
         xhr.onreadystatechange = handler;
         xhr.responseType = 'json';
         xhr.setRequestHeader('Accept', 'application/json');
         xhr.send();
-  
+
         function handler() {
           if (this.readyState === this.DONE) {
             if (this.status === 200) {
@@ -28074,16 +28074,16 @@
         };
       });
     }
-  
+
     getJSON('/posts.json').then(function(json) {
       // on fulfillment
     }, function(reason) {
       // on rejection
     });
     ```
-  
+
     Unlike callbacks, promises are great composable primitives.
-  
+
     ```js
     Promise.all([
       getJSON('/posts'),
@@ -28091,11 +28091,11 @@
     ]).then(function(values){
       values[0] // => postsJSON
       values[1] // => commentsJSON
-  
+
       return values;
     });
     ```
-  
+
     @class Promise
     @param {Function} resolver
     Useful for tooling.
@@ -28302,9 +28302,9 @@
               /**
       `finally` will be invoked regardless of the promise's fate just as native
       try/catch/finally behaves
-    
+
       Synchronous example:
-    
+
       ```js
       findAuthor() {
         if (Math.random() > 0.5) {
@@ -28312,7 +28312,7 @@
         }
         return new Author();
       }
-    
+
       try {
         return findAuthor(); // succeed or fail
       } catch(error) {
@@ -28322,9 +28322,9 @@
         // doesn't affect the return value
       }
       ```
-    
+
       Asynchronous example:
-    
+
       ```js
       findAuthor().catch(function(reason){
         return findOtherAuther();
@@ -28332,7 +28332,7 @@
         // author was either found, or not
       });
       ```
-    
+
       @method finally
       @param {Function} callback
       @return {Promise}
@@ -47452,7 +47452,7 @@
   	   y - rpdy = pvns * (x- rpdx)
   	   y = p.y
   	   x = rpdx + ( p.y - rpdy ) / pvns
-  
+
   case freedom vector == y-axis:
   ------------------------------
   	    * pm
@@ -47481,10 +47481,10 @@
   	   y - rpdy = pvns * (x - rpdx)
   	   x = p.x
   	   y = rpdy +  pvns * (p.x - rpdx)
-  
+
   	generic case:
   -------------
-  
+
                                 .'(fv)
                               .'
                             .* pm
@@ -47509,7 +47509,7 @@
   	 equation of freedom vector line:
       fvs ... slope of freedom vector (=fy/fx)
   	    y - py = fvs * (x - px)
-  
+
     on pm both equations are true for same x/y
   	    y - rpdy = pvns * (x - rpdx)
   	    y - py = fvs * (x - px)
@@ -47521,13 +47521,13 @@
   	    fvs * x - fvs * px + py = pvns * x - pvns * rpdx + rpdy
   	  solve for x:
   	    fvs * x - pvns * x = fvs * px - pvns * rpdx - py + rpdy
-  
+
   	          fvs * px - pvns * rpdx + rpdy - py
       x =  -----------------------------------
                    fvs - pvns
   	  and:
   	    y = fvs * (x - px) + py
-  
+
   	INTERPOLATE:
   ============
   	Examples of point interpolation.
@@ -47537,8 +47537,8 @@
   original distance of the other point by the sum of both distances.
   	If the sum of both distances is 0, then move the point by the
   arithmetic average of the movement of both reference points.
-  
-  
+
+
              (+6)
       rp1o *---->*rp1
            .     .                          (+12)
@@ -47554,9 +47554,9 @@
                  .    12     .          24           .
                  |...........|.......................|
                                     36
-  
+
   -------
-  
+
   	           (+10)
       rp1o *-------->*rp1
            .         .                      (-10)
@@ -47572,28 +47572,28 @@
                      .    .   20         .
                      |....|..............|
                        5        15
-  
+
   -------
-  
+
              (+10)
       rp1o *-------->*rp1
            .         .
            .         .
       rp2o *-------->*rp2
-  
+
                                  (+10)
                             po *-------->* p
   	-------
-  
+
              (+10)
       rp1o *-------->*rp1
            .         .
            .         .(+30)
       rp2o *---------------------------->*rp2
-  
+
                                           (+25)
                             po *----------------------->* p
-  
+
   	vim: set ts=4 sw=4 expandtab:
   *****/
             // The Font object

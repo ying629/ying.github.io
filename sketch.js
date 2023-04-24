@@ -1,7 +1,3 @@
-//stable pastel colors
-//mouse over "pulse" and changes colors
-
-
 var canvas;
 
 function setup() {
@@ -11,10 +7,14 @@ function setup() {
 }
 
 function draw() {
-	clear();
-	background(color('white'));
-}
+    circle(30,30,30);
+  	clear();
+	background(color(164, 216, 216));
 
+  let white = color(255,255,255);
+  fill(white);
+  rect(window.innerWidth-875,window.innerHeight-445,150,150,20,20);
+}
 
 
 // https://p5js.org/reference/#/p5/image

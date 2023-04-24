@@ -9,9 +9,9 @@ function setup() {
 function draw() {
     circle(30,30,30);
   	clear();
-	background(color(237, 225, 225));
+	background(color(164,195,178));
 
-  let white = color(131,197,190);
+  let white = color(218, 255, 239);
   fill(white);
 	//project 1
   rect(window.innerWidth*.29,window.innerHeight*.22,150,150,20,20);

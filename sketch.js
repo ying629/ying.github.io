@@ -9,11 +9,21 @@ function setup() {
 function draw() {
     circle(30,30,30);
   	clear();
-	background(color(164, 216, 216));
+	background(color(237, 225, 225));
 
-  let white = color(255,255,255);
+  let white = color(131,197,190);
   fill(white);
-  rect(window.innerWidth-875,window.innerHeight-445,150,150,20,20);
+	//project 1
+  rect(window.innerWidth*.29,window.innerHeight*.22,150,150,20,20);
+
+	//project 2
+	rect(window.innerWidth*.59,window.innerHeight*.22,150,150,20,20);
+
+	//project 3
+		rect(window.innerWidth*.29,window.innerHeight*.63,150,150,20,20);
+
+	//project 4
+		rect(window.innerWidth*.59,window.innerHeight*.63,150,150,20,20);
 }
 
 

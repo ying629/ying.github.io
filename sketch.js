@@ -11,19 +11,21 @@ function draw() {
   	clear();
 	background(color(164,195,178));
 
-  let white = color(218, 255, 239);
-  fill(white);
+  let teal = color(218, 255, 239);
+  fill(teal);
 	//project 1
-  rect(window.innerWidth*.29,window.innerHeight*.22,150,150,20,20);
+	strokeWeight(10)
+	stroke(128,128,128)
+  rect(window.innerWidth*.295,window.innerHeight*.18,150,150,20,20);
 
 	//project 2
-	rect(window.innerWidth*.59,window.innerHeight*.22,150,150,20,20);
+	rect(window.innerWidth*.60,window.innerHeight*.18,150,150,20,20);
 
 	//project 3
-		rect(window.innerWidth*.29,window.innerHeight*.63,150,150,20,20);
+		rect(window.innerWidth*.295,window.innerHeight*.53,150,150,20,20);
 
 	//project 4
-		rect(window.innerWidth*.59,window.innerHeight*.63,150,150,20,20);
+		rect(window.innerWidth*.60,window.innerHeight*.53,150,150,20,20);
 }
 
 

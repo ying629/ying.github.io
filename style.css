@@ -23,6 +23,10 @@ td {
 	font-family: "Lucida Console", "Courier New", monospace;
 }
 
+iframe {
+border:10px solid grey;
+}
+
 canvas {
 	position: absolute;
 	top: 0;

@@ -1,18 +1,19 @@
 var canvas;
+let  bg;
 
 function setup() {
-	canvas = createCanvas(window.innerWidth, window.innerHeight);
+	bg = loadImage('Pictures/binary_background.jpg');
+	createCanvas(window.innerWidth, window.innerHeight);
 	// canvas.position(0,0);
     strokeWeight(0);
 }
 
 function draw() {
-    circle(30,30,30);
-  	clear();
-	background(color(164,195,178));
+	background(bg);
 
-  let teal = color(218, 255, 239);
-  fill(teal);
+	let teal = color(218, 255, 239);
+	fill(teal);
+
 	//project 1
 	strokeWeight(10)
 	stroke(128,128,128)

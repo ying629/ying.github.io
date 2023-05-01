@@ -2,19 +2,40 @@ var canvas;
 let  bg;
 
 function setup() {
-	bg = loadImage('Pictures/binary_background.jpg');
 	createCanvas(window.innerWidth, window.innerHeight);
 	// canvas.position(0,0);
     strokeWeight(0);
 }
 
 function draw() {
-	background(bg);
+
+	//background
+	const speed = 100;
+
+	//create top pixels
+	const topR = 100 * noise(frameCount / speed);
+	const topG = 150 * noise(frameCount / speed);
+	const topB = 150 * noise(frameCount / speed);
+	//create bottom pixels always  darker than top to make gradient
+	const bottomR = 100 * noise(1000 +frameCount / speed);
+	const bottomG = 150 * noise(1000 +frameCount / speed);
+	const bottomB = 150 * noise(2000 + frameCount / speed);
+
+	const topColor = color(topR, topG, topB);
+	const bottomColor = color(bottomR, bottomG, bottomB);
+
+	for(let y = 0; y < height; y++) {
+		const lineColor = lerpColor(topColor, bottomColor, y / height);
+
+		stroke(lineColor);
+		line(0, y, width, y);
+	}
+
 
 	let teal = color(218, 255, 239);
 	fill(teal);
 
-	//project 1
+	//boxes background
 	strokeWeight(10)
 	stroke(128,128,128)
   rect(window.innerWidth*.295,window.innerHeight*.18,150,150,20,20);

@@ -27,11 +27,11 @@ iframe {
 border:10px solid grey;
 }
 
-canvas {
+/* canvas {
 	position: absolute;
 	top: 0;
 	z-index: -1;
-}
+} */
 
 .canvasholder {
 	width: 100%;

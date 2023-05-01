@@ -2,28 +2,31 @@ var canvas;
 let  bg;
 
 function setup() {
-	createCanvas(window.innerWidth, window.innerHeight);
-	// canvas.position(0,0);
-    strokeWeight(0);
+	canvas = createCanvas(window.innerWidth, window.innerHeight);
+	canvas.position(0,0);
+	canvas.style('z-index','-1');
+  strokeWeight(0);
 }
 
 function draw() {
 
 	//background
-	const speed = 100;
+	const speed = 75;
 
-	//create top pixels
+	//random top pixels colors
 	const topR = 100 * noise(frameCount / speed);
 	const topG = 150 * noise(frameCount / speed);
 	const topB = 150 * noise(frameCount / speed);
-	//create bottom pixels always  darker than top to make gradient
-	const bottomR = 100 * noise(1000 +frameCount / speed);
-	const bottomG = 150 * noise(1000 +frameCount / speed);
+	//random bottom pixels colors -  always darker than top to make gradient
+	const bottomR = 100 * noise(1000 + frameCount / speed);
+	const bottomG = 150 * noise(1000 + frameCount / speed);
 	const bottomB = 150 * noise(2000 + frameCount / speed);
 
+	//create pixels with generated pixels
 	const topColor = color(topR, topG, topB);
 	const bottomColor = color(bottomR, bottomG, bottomB);
 
+	//change color
 	for(let y = 0; y < height; y++) {
 		const lineColor = lerpColor(topColor, bottomColor, y / height);
 

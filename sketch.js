@@ -46,11 +46,11 @@ function draw() {
 	rect(window.innerWidth*.30,window.innerHeight*.01,600,60,50,50);
 
 	//projects
-  rect(window.innerWidth*.27,window.innerHeight*.15,220,220,90,30);
-	rect(window.innerWidth*.58,window.innerHeight*.15,220,220,20,70);
+  rect(window.innerWidth*.28,window.innerHeight*.15,200,220,90,30);
+	rect(window.innerWidth*.58,window.innerHeight*.15,200,220,20,70);
 
-	rect(window.innerWidth*.27,window.innerHeight*.50,220,220,90,30);
-	rect(window.innerWidth*.58,window.innerHeight*.50,220,220,20,70);
+	rect(window.innerWidth*.28,window.innerHeight*.50,200,220,90,30);
+	rect(window.innerWidth*.58,window.innerHeight*.50,200,220,20,70);
 }
 
 

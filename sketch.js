@@ -41,16 +41,16 @@ function draw() {
 	//boxes background
 	strokeWeight(10)
 	stroke(0,0,0)
-  rect(window.innerWidth*.27,window.innerHeight*.15,220,220,90,30);
 
-	//project 2
+	//headings
+	rect(window.innerWidth*.30,window.innerHeight*.01,600,60,50,50);
+
+	//projects
+  rect(window.innerWidth*.27,window.innerHeight*.15,220,220,90,30);
 	rect(window.innerWidth*.58,window.innerHeight*.15,220,220,20,70);
 
-	//project 3
-		rect(window.innerWidth*.27,window.innerHeight*.50,220,220,90,30);
-
-	//project 4
-		rect(window.innerWidth*.58,window.innerHeight*.50,220,220,20,70);
+	rect(window.innerWidth*.27,window.innerHeight*.50,220,220,90,30);
+	rect(window.innerWidth*.58,window.innerHeight*.50,220,220,20,70);
 }
 
 

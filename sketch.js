@@ -40,17 +40,17 @@ function draw() {
 
 	//boxes background
 	strokeWeight(10)
-	stroke(128,128,128)
-  rect(window.innerWidth*.295,window.innerHeight*.18,150,150,20,20);
+	stroke(0,0,0)
+  rect(window.innerWidth*.27,window.innerHeight*.15,220,220,90,30);
 
 	//project 2
-	rect(window.innerWidth*.60,window.innerHeight*.18,150,150,20,20);
+	rect(window.innerWidth*.58,window.innerHeight*.15,220,220,20,70);
 
 	//project 3
-		rect(window.innerWidth*.295,window.innerHeight*.53,150,150,20,20);
+		rect(window.innerWidth*.27,window.innerHeight*.50,220,220,90,30);
 
 	//project 4
-		rect(window.innerWidth*.60,window.innerHeight*.53,150,150,20,20);
+		rect(window.innerWidth*.58,window.innerHeight*.50,220,220,20,70);
 }
 
 
